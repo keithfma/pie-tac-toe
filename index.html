@@ -3,26 +3,23 @@
 
 <head>
 <title>Page Title</title>
-<link rel="stylesheet" type="text/css" href="styles.css">
-<script src='scripts.js'></script>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script src='scripts.js'></script>
 </head>
 
 <body>
 
 <h1>Pie Tac Toe!</h1>
 
-<div id="choose-players">
-    <div id="choose-player-x" class="choose-player"></div>
-    <div id="choose-player-y" class="choose-player"></div>
-</div>
+<select class="choose-player" id="choose-player-x" ></select>
+<select class="choose-player" id="choose-player-o" ></select>
 
 <table id="game-board">
 </table>
 
-<div id="player-imgs">
-    <div class="player-img" id="player-image-x"></div>
-    <div class="player-img" id="player-image-y"></div>
-</div>
+<img class="player-img" id="player-image-x" src=null>
+<img class="player-img" id="player-image-o" src=null>
 
 </body>
 </html> 
