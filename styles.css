@@ -6,3 +6,29 @@
 .row {
     display: inline-block;
 }
+
+tr {
+    height: 50px;
+}
+
+td {
+    width: 50px;
+}
+
+table {
+  border-collapse: collapse;
+  border-style: hidden;
+}
+
+table td {
+  border: 5px solid black;
+}
+
+h2 {
+    text-align: center;
+}
+
+.choose-player {
+    width: 100%;
+    font-size: 20pt;
+}

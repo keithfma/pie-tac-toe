@@ -13,6 +13,7 @@ var curr_players = {
     x: null,
     o: null
 };
+var next_marker = 'x';
 
 // update board to reflect selected players
 function update_player(event) {
