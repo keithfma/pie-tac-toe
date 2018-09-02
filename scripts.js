@@ -6,6 +6,7 @@ var players = [
     "Keith",
     "Odin" 
 ];
+// NOTE: victory conditions are hard-coded, for now, so the board size *cannot* be changed
 var board_width = 3;
 var board_height = 3;
 var board = [];
@@ -14,6 +15,7 @@ var curr_players = {
     o: null
 };
 var on_deck = 1;
+var game_over = false;
 
 // update board to reflect selected players
 function set_player(event) {
@@ -66,13 +68,51 @@ function update_player() {
     next_player.classList.add('my-turn');
 }
 
+// return true if current player has won the game
+// TODO: flexible algorithm for arbitrary boad size
+function victory() {
+    mrk = markers[on_deck];
+    if (       board[0][0] == mrk && board[0][1] == mrk && board[0][2] == mrk) {
+        return true
+    } else if (board[2][0] == mrk && board[2][1] == mrk && board[2][2] == mrk) {
+        return true
+    } else if (board[0][0] == mrk && board[1][0] == mrk && board[2][0] == mrk) {
+        return true
+    } else if (board[0][2] == mrk && board[1][2] == mrk && board[2][2] == mrk) {
+        return true
+    } else if (board[0][0] == mrk && board[1][1] == mrk && board[2][2] == mrk) {
+        return true
+    } else if (board[0][2] == mrk && board[1][1] == mrk && board[2][0] == mrk) {
+        return true
+    } else {
+        return false
+    }
+}
+
+// update display to show the winner
+function show_winner() {
+    game_over = true;
+    // TODO: update classes
+}
+
 // add marker in response to user click on a board box
 function mark_board(event) {
-    board_elem = event.target;
-    if (board_elem.innerHTML == "") {
-        curr_marker = markers[on_deck];
+    var board_elem = event.target;
+    if (board_elem.innerHTML == "" && game_over == false) {
+        // update board visual
+        var curr_marker = markers[on_deck];
         board_elem.innerHTML = curr_marker;
-        update_player();
+        // update board array
+        var tmp = board_elem.id.split("-");
+        var ii = parseInt(tmp[0]);
+        var jj = parseInt(tmp[1]);
+        board[ii][jj] = curr_marker;
+        // handle victory
+        if (victory()) {
+            show_winner();
+        } else {
+            update_player();
+        }
     }
 }
 
