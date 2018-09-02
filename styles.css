@@ -42,3 +42,7 @@ h2 {
     border: 5px solid white;
     border-radius: 10px;
 }
+
+.winner {
+    background-color: #6699ff;
+}

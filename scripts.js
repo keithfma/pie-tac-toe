@@ -68,31 +68,47 @@ function update_player() {
     next_player.classList.add('my-turn');
 }
 
-// return true if current player has won the game
+// return list of [row, col] indices  if current player has won the game, else false
 // TODO: flexible algorithm for arbitrary boad size
 function victory() {
-    mrk = markers[on_deck];
+    var idx = false;
+    var mrk = markers[on_deck];
     if (       board[0][0] == mrk && board[0][1] == mrk && board[0][2] == mrk) {
-        return true
+        idx = [     [0, 0],               [0, 1],               [0, 2]]; 
+
+    } else if (board[1][0] == mrk && board[1][1] == mrk && board[1][2] == mrk) {
+        idx = [     [1, 0],               [1, 1],               [1, 2]]; 
+
     } else if (board[2][0] == mrk && board[2][1] == mrk && board[2][2] == mrk) {
-        return true
+        idx = [     [2, 0],               [2, 1],               [2, 2]]; 
+
     } else if (board[0][0] == mrk && board[1][0] == mrk && board[2][0] == mrk) {
-        return true
+        idx = [     [0, 0],               [1, 0],               [2, 0]]; 
+
+    } else if (board[0][1] == mrk && board[1][1] == mrk && board[2][1] == mrk) {
+        idx = [     [0, 1],               [1, 1],               [2, 1]]; 
+
     } else if (board[0][2] == mrk && board[1][2] == mrk && board[2][2] == mrk) {
-        return true
+        idx = [     [0, 2],               [1, 2],               [2, 2]]; 
+
     } else if (board[0][0] == mrk && board[1][1] == mrk && board[2][2] == mrk) {
-        return true
+        idx = [     [0, 0],               [1, 1],               [2, 2]]; 
+
     } else if (board[0][2] == mrk && board[1][1] == mrk && board[2][0] == mrk) {
-        return true
-    } else {
-        return false
-    }
+        idx = [     [0, 2],               [1, 1],               [2, 0]]; 
+    } 
+    return idx;
 }
 
 // update display to show the winner
-function show_winner() {
+function show_winner(win_idx) {
     game_over = true;
-    // TODO: update classes
+    console.log(win_idx);
+    for (let ij of win_idx) {
+        console.log(ij);
+        elem = document.getElementById(ij[0].toString() + '-' + ij[1].toString());
+        elem.classList.add('winner');
+    }
 }
 
 // add marker in response to user click on a board box
@@ -108,8 +124,9 @@ function mark_board(event) {
         var jj = parseInt(tmp[1]);
         board[ii][jj] = curr_marker;
         // handle victory
-        if (victory()) {
-            show_winner();
+        var win_idx = victory();
+        if (win_idx) {
+            show_winner(win_idx);
         } else {
             update_player();
         }
