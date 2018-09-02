@@ -2,7 +2,7 @@
 <html>
 
 <head>
-<title>Page Title</title>
+<title>Pie-Tac-Toe!</title>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="styles.css">
     <script src='scripts.js'></script>
@@ -10,16 +10,30 @@
 
 <body>
 
-<h1>Pie Tac Toe!</h1>
+<h1>Pie-Tac-Toe!</h1>
 
-<select class="choose-player" id="choose-player-x" ></select>
-<select class="choose-player" id="choose-player-o" ></select>
+<div class="row">
+    <div>
+        <select class="choose-player" id="choose-player-x" ></select>
+    </div>
+    <div>
+        <img class="player-img" id="player-image-x" src=null>
+    </div>
+</div>
 
-<table id="game-board">
-</table>
+<div class="row">
+    <table id="game-board">
+    </table>
+</div>
 
-<img class="player-img" id="player-image-x" src=null>
-<img class="player-img" id="player-image-o" src=null>
+<div class="row">
+    <div>
+        <select class="choose-player" id="choose-player-o" ></select>
+    </div>
+    <div>
+        <img class="player-img" id="player-image-o" src=null>
+    </div>
+</div>
 
 </body>
 </html> 
