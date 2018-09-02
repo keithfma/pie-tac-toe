@@ -8,11 +8,14 @@
 }
 
 tr {
-    height: 50px;
+    height: 80px;
 }
 
 td {
-    width: 50px;
+    width: 80px;
+    font-size: 44pt;
+    text-align: center;
+    vertical-align: middle;
 }
 
 table {
