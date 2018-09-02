@@ -32,3 +32,13 @@ h2 {
     width: 100%;
     font-size: 20pt;
 }
+
+.my-turn {
+    border: 5px solid green;
+    border-radius: 10px;
+}
+
+.not-my-turn {
+    border: 5px solid white;
+    border-radius: 10px;
+}
