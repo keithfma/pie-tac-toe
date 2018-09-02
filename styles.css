@@ -49,3 +49,15 @@ h2 {
 .winner {
     background-color: #6699ff;
 }
+
+.match-width {
+    width: 600px;
+}
+
+button {
+    display: block;
+    margin: auto;
+    text-align: center;
+    font-size: 28pt;
+}
+

@@ -17,6 +17,7 @@ var curr_players = {
 var on_deck = 1;
 var game_over = false;
 
+
 // update board to reflect selected players
 function set_player(event) {
     // update curr_players global
@@ -34,7 +35,7 @@ function create_game_board() {
     // TODO: update dimensions from menus
     // remove existing board
     if (document.contains(document.getElementById('game-board-table'))) {
-        document.getElementById('game-board-element').remove();
+        document.getElementById('game-board-table').remove();
         board = [];
     }
     // create new board
@@ -133,6 +134,14 @@ function mark_board(event) {
     }
 }
 
+// (re)start new game
+function start_new_game() {
+    on_deck = 1;
+    game_over = false;
+    update_player();
+    create_game_board();
+}
+
 // init function, runs automatically on page load
 document.addEventListener('DOMContentLoaded', function() {
   
@@ -158,7 +167,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // initialize game board, assign listeners
     create_game_board();
-    // TODO: listener for new game
+    document.getElementById('new-game').addEventListener('click', start_new_game);
     // TODO: listeners for changed board size
 
 }, false);
