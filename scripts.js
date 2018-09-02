@@ -4,7 +4,10 @@ var players = [
     "Adam", 
     "Erik", 
     "Keith",
-    "Odin" 
+    "Odin", 
+    "Karl",
+    "Zosia",
+    "Pei"
 ];
 // NOTE: victory conditions are hard-coded, for now, so the board size *cannot* be changed
 var board_width = 3;
